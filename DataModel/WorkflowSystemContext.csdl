@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HrgWeb.Business.WorkflowSystem.DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WorkflowSystemContext" annotation:LazyLoadingEnabled="false" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <EntitySet Name="EndEventNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.EndEventNode" a:GetterAccess="Internal" />
+    <EntitySet Name="ForkNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.ForkNode" a:GetterAccess="Internal" />
+    <EntitySet Name="JoinNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.JoinNode" a:GetterAccess="Internal" />
+    <EntitySet Name="Processes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.Process" a:GetterAccess="Internal" />
+    <EntitySet Name="ProcessNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" a:GetterAccess="Internal" />
+    <EntitySet Name="ServiceTaskNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.ServiceTaskNode" a:GetterAccess="Internal" />
+    <EntitySet Name="StartEventNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.StartEventNode" a:GetterAccess="Internal" />
+    <EntitySet Name="UserTaskNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.UserTaskNode" a:GetterAccess="Internal" />
+    <EntitySet Name="ProcessInstances" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.ProcessInstance" a:GetterAccess="Internal" />
+    <EntitySet Name="ProcessExecutionSteps" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.ProcessExecutionStep" a:GetterAccess="Internal" />
+    <AssociationSet Name="FK_MD_EndEventNode_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_EndEventNode_m_MD_ProcessNode_m">
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+      <End Role="MD_EndEventNode_m" EntitySet="EndEventNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_ForkNode_m_MD_ProcessNode_m1" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNode_m_MD_ProcessNode_m1">
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+      <End Role="MD_ForkNode_m" EntitySet="ForkNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_JoinNode_m_MD_ProcessNode_m1" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinNode_m_MD_ProcessNode_m1">
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+      <End Role="MD_JoinNode_m" EntitySet="JoinNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_ProcessNode_m_MD_Process_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ProcessNode_m_MD_Process_m">
+      <End Role="MD_Process_m" EntitySet="Processes" />
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WF_Process_m_MD_Process_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_Process_m_MD_Process_m">
+      <End Role="MD_Process_m" EntitySet="Processes" />
+      <End Role="WF_Process_m" EntitySet="ProcessInstances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_ServiceTaskNode_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ServiceTaskNode_m_MD_ProcessNode_m">
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+      <End Role="MD_ServiceTaskNode_m" EntitySet="ServiceTaskNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_StartEventNode_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_StartEventNode_m_MD_ProcessNode_m">
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+      <End Role="MD_StartEventNode_m" EntitySet="StartEventNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_UserTaskNode_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_UserTaskNode_m_MD_ProcessNode_m">
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+      <End Role="MD_UserTaskNode_m" EntitySet="UserTaskNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WF_ProcessExecutionStep_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_ProcessExecutionStep_m_MD_ProcessNode_m">
+      <End Role="MD_ProcessNode_m" EntitySet="ProcessNodes" />
+      <End Role="WF_ProcessExecutionStep_m" EntitySet="ProcessExecutionSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WF_ProcessExecutionStep_m_WF_Process_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_ProcessExecutionStep_m_WF_Process_m">
+      <End Role="WF_Process_m" EntitySet="ProcessInstances" />
+      <End Role="WF_ProcessExecutionStep_m" EntitySet="ProcessExecutionSteps" />
+    </AssociationSet>
+    <EntitySet Name="ForkNextProcessNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.ForkNextProcessNode" a:GetterAccess="Internal" />
+    <AssociationSet Name="FK_MD_ForkNextProcessNode_m_MD_ForkNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNextProcessNode_m_MD_ForkNode_m">
+      <End Role="ForkNode" EntitySet="ForkNodes" />
+      <End Role="MD_ForkNextProcessNode_m" EntitySet="ForkNextProcessNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_ForkNextProcessNode_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNextProcessNode_m_MD_ProcessNode_m">
+      <End Role="ProcessNode" EntitySet="ProcessNodes" />
+      <End Role="MD_ForkNextProcessNode_m" EntitySet="ForkNextProcessNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_ProcessNode_m_MD_ProcessNode_m1" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ProcessNode_m_MD_ProcessNode_m1">
+      <End Role="ProcessNode" EntitySet="ProcessNodes" />
+      <End Role="ProcessNode1" EntitySet="ProcessNodes" />
+    </AssociationSet>
+    <EntitySet Name="JoinPreviousProcessNode" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.JoinPreviousProcessNode" a:GetterAccess="Internal" />
+    <AssociationSet Name="FK_MD_JoinPreviousProcessNode_m_MD_JoinNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinPreviousProcessNode_m_MD_JoinNode_m">
+      <End Role="JoinNode" EntitySet="JoinNodes" />
+      <End Role="MD_JoinPreviousProcessNode_m" EntitySet="JoinPreviousProcessNode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MD_JoinPreviousProcessNode_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinPreviousProcessNode_m_MD_ProcessNode_m">
+      <End Role="ProcessNode" EntitySet="ProcessNodes" />
+      <End Role="MD_JoinPreviousProcessNode_m" EntitySet="JoinPreviousProcessNode" />
+    </AssociationSet>
+    <EntitySet Name="TimerNodes" EntityType="HrgWeb.Business.WorkflowSystem.DataModel.TimerNode" a:GetterAccess="Internal" />
+    <AssociationSet Name="FK_MD_TimerNode_m_MD_ProcessNode_m" Association="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_TimerNode_m_MD_ProcessNode_m">
+      <End Role="ProcessNode" EntitySet="ProcessNodes" />
+      <End Role="MD_TimerNode_m" EntitySet="TimerNodes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="EndEventNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_EndEventNode_m_MD_ProcessNode_m" FromRole="MD_EndEventNode_m" ToRole="MD_ProcessNode_m" />
+  </EntityType>
+  <EntityType Name="ForkNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNode_m_MD_ProcessNode_m1" FromRole="MD_ForkNode_m" ToRole="MD_ProcessNode_m" />
+    <NavigationProperty Name="NextProcessNodes" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNextProcessNode_m_MD_ForkNode_m" FromRole="ForkNode" ToRole="MD_ForkNextProcessNode_m" />
+  </EntityType>
+  <EntityType Name="JoinNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinNode_m_MD_ProcessNode_m1" FromRole="MD_JoinNode_m" ToRole="MD_ProcessNode_m" />
+    <NavigationProperty Name="PreviousProcessNodes" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinPreviousProcessNode_m_MD_JoinNode_m" FromRole="JoinNode" ToRole="MD_JoinPreviousProcessNode_m" />
+  </EntityType>
+  <EntityType Name="Process" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="VoucherKindID" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="RegUserID" Type="Int32" Nullable="false" />
+    <Property Name="RegDate" Type="String" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyUserID" Type="Int32" />
+    <Property Name="ModifyDate" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="RegCompanyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessNodes" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ProcessNode_m_MD_Process_m" FromRole="MD_Process_m" ToRole="MD_ProcessNode_m" />
+    <NavigationProperty Name="ProcessInstances" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_Process_m_MD_Process_m" FromRole="MD_Process_m" ToRole="WF_Process_m" />
+  </EntityType>
+  <EntityType Name="ProcessNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProcessID" Type="Int32" Nullable="false" />
+    <Property Name="NodeKindID" Type="Int32" Nullable="false" />
+    <Property Name="NextProcessNodeID" Type="Int32" />
+    <Property Name="DesignerLocation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DesignerLinkPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="RegUserID" Type="Int32" Nullable="false" />
+    <Property Name="RegDate" Type="String" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyUserID" Type="Int32" />
+    <Property Name="ModifyDate" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="RegCompanyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Process" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ProcessNode_m_MD_Process_m" FromRole="MD_ProcessNode_m" ToRole="MD_Process_m" />
+    <NavigationProperty Name="StartEventNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_StartEventNode_m_MD_ProcessNode_m" FromRole="MD_ProcessNode_m" ToRole="MD_StartEventNode_m" />
+    <NavigationProperty Name="EndEventNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_EndEventNode_m_MD_ProcessNode_m" FromRole="MD_ProcessNode_m" ToRole="MD_EndEventNode_m" />
+    <NavigationProperty Name="UserTaskNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_UserTaskNode_m_MD_ProcessNode_m" FromRole="MD_ProcessNode_m" ToRole="MD_UserTaskNode_m" />
+    <NavigationProperty Name="ServiceTaskNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ServiceTaskNode_m_MD_ProcessNode_m" FromRole="MD_ProcessNode_m" ToRole="MD_ServiceTaskNode_m" />
+    <NavigationProperty Name="JoinNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinNode_m_MD_ProcessNode_m1" FromRole="MD_ProcessNode_m" ToRole="MD_JoinNode_m" />
+    <NavigationProperty Name="ForkNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNode_m_MD_ProcessNode_m1" FromRole="MD_ProcessNode_m" ToRole="MD_ForkNode_m" />
+    <NavigationProperty Name="TimerNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_TimerNode_m_MD_ProcessNode_m" FromRole="ProcessNode" ToRole="MD_TimerNode_m" />
+    <NavigationProperty Name="NextProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ProcessNode_m_MD_ProcessNode_m1" FromRole="ProcessNode1" ToRole="ProcessNode" />
+    <NavigationProperty Name="PreviousProcessNodes" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ProcessNode_m_MD_ProcessNode_m1" FromRole="ProcessNode" ToRole="ProcessNode1" />
+    <NavigationProperty Name="ProcessExecutionSteps" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_ProcessExecutionStep_m_MD_ProcessNode_m" FromRole="MD_ProcessNode_m" ToRole="WF_ProcessExecutionStep_m" />
+  </EntityType>
+  <EntityType Name="ServiceTaskNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ServiceTaskNode_m_MD_ProcessNode_m" FromRole="MD_ServiceTaskNode_m" ToRole="MD_ProcessNode_m" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="Metadata" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="StartEventNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_StartEventNode_m_MD_ProcessNode_m" FromRole="MD_StartEventNode_m" ToRole="MD_ProcessNode_m" />
+  </EntityType>
+  <EntityType Name="UserTaskNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_UserTaskNode_m_MD_ProcessNode_m" FromRole="MD_UserTaskNode_m" ToRole="MD_ProcessNode_m" />
+    <Property Name="RegistrationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="IsStartTask" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProcessInstance" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProcessMetaDataID" Type="Int32" Nullable="false" />
+    <Property Name="VoucherRowID" Type="Int32" Nullable="false" />
+    <Property Name="Closed" Type="Boolean" Nullable="false" />
+    <Property Name="RegUserID" Type="Int32" Nullable="false" />
+    <Property Name="RegDate" Type="String" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyUserID" Type="Int32" />
+    <Property Name="ModifyDate" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="RegCompanyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Process" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_Process_m_MD_Process_m" FromRole="WF_Process_m" ToRole="MD_Process_m" />
+    <NavigationProperty Name="ProcessExecutionSteps" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_ProcessExecutionStep_m_WF_Process_m" FromRole="WF_Process_m" ToRole="WF_ProcessExecutionStep_m" />
+  </EntityType>
+  <EntityType Name="ProcessExecutionStep" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Guid" />
+    <Property Name="ProcessID" Type="Int32" Nullable="false" />
+    <Property Name="ProcessNodeID" Type="Int32" Nullable="false" />
+    <Property Name="PathID" Type="Guid" Nullable="false" />
+    <Property Name="Done" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDateTime" Type="Int64" Nullable="false" />
+    <Property Name="DoneDateTime" Type="Int64" />
+    <Property Name="PreviousExecutionStepID" Type="String" Nullable="false" MaxLength="800" Unicode="false" FixedLength="false" />
+    <Property Name="Data" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RegUserID" Type="Int32" Nullable="false" />
+    <Property Name="RegDate" Type="String" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyUserID" Type="Int32" />
+    <Property Name="ModifyDate" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="RegCompanyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProcessInstance" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_ProcessExecutionStep_m_WF_Process_m" FromRole="WF_ProcessExecutionStep_m" ToRole="WF_Process_m" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_WF_ProcessExecutionStep_m_MD_ProcessNode_m" FromRole="WF_ProcessExecutionStep_m" ToRole="MD_ProcessNode_m" />
+  </EntityType>
+  <Association Name="FK_MD_EndEventNode_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.EndEventNode" Role="MD_EndEventNode_m" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MD_ProcessNode_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_EndEventNode_m">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_ForkNode_m_MD_ProcessNode_m1">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ForkNode" Role="MD_ForkNode_m" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MD_ProcessNode_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_ForkNode_m">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_JoinNode_m_MD_ProcessNode_m1">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.JoinNode" Role="MD_JoinNode_m" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MD_ProcessNode_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_JoinNode_m">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_ProcessNode_m_MD_Process_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.Process" Role="MD_Process_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MD_Process_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_ProcessNode_m">
+        <PropertyRef Name="ProcessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WF_Process_m_MD_Process_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.Process" Role="MD_Process_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessInstance" Role="WF_Process_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MD_Process_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WF_Process_m">
+        <PropertyRef Name="ProcessMetaDataID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_ServiceTaskNode_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ServiceTaskNode" Role="MD_ServiceTaskNode_m" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MD_ProcessNode_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_ServiceTaskNode_m">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_StartEventNode_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.StartEventNode" Role="MD_StartEventNode_m" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MD_ProcessNode_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_StartEventNode_m">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_UserTaskNode_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.UserTaskNode" Role="MD_UserTaskNode_m" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MD_ProcessNode_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_UserTaskNode_m">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WF_ProcessExecutionStep_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="MD_ProcessNode_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessExecutionStep" Role="WF_ProcessExecutionStep_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MD_ProcessNode_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WF_ProcessExecutionStep_m">
+        <PropertyRef Name="ProcessNodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WF_ProcessExecutionStep_m_WF_Process_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessInstance" Role="WF_Process_m" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessExecutionStep" Role="WF_ProcessExecutionStep_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WF_Process_m">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WF_ProcessExecutionStep_m">
+        <PropertyRef Name="ProcessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ForkNextProcessNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ForkNodeID" Type="Int32" Nullable="false" />
+    <Property Name="NextProcessNodeID" Type="Int32" Nullable="false" />
+    <Property Name="Condition" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ForkNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNextProcessNode_m_MD_ForkNode_m" FromRole="MD_ForkNextProcessNode_m" ToRole="ForkNode" />
+    <NavigationProperty Name="NextProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_ForkNextProcessNode_m_MD_ProcessNode_m" FromRole="MD_ForkNextProcessNode_m" ToRole="ProcessNode" />
+    <Property Name="DesignerLinkPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_MD_ForkNextProcessNode_m_MD_ForkNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ForkNode" Role="ForkNode" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ForkNextProcessNode" Role="MD_ForkNextProcessNode_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ForkNode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_ForkNextProcessNode_m">
+        <PropertyRef Name="ForkNodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_ForkNextProcessNode_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="ProcessNode" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ForkNextProcessNode" Role="MD_ForkNextProcessNode_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessNode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_ForkNextProcessNode_m">
+        <PropertyRef Name="NextProcessNodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_ProcessNode_m_MD_ProcessNode_m1">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="ProcessNode" Multiplicity="0..1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="ProcessNode1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessNode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProcessNode1">
+        <PropertyRef Name="NextProcessNodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="JoinPreviousProcessNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="JoinNodeID" Type="Int32" Nullable="false" />
+    <Property Name="PreviousProcessNodeID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsOptional" Type="Boolean" Nullable="false" />
+    <Property Name="OptionalCondition" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="JoinNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinPreviousProcessNode_m_MD_JoinNode_m" FromRole="MD_JoinPreviousProcessNode_m" ToRole="JoinNode" />
+    <NavigationProperty Name="PreviousProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_JoinPreviousProcessNode_m_MD_ProcessNode_m" FromRole="MD_JoinPreviousProcessNode_m" ToRole="ProcessNode" />
+  </EntityType>
+  <Association Name="FK_MD_JoinPreviousProcessNode_m_MD_JoinNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.JoinNode" Role="JoinNode" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.JoinPreviousProcessNode" Role="MD_JoinPreviousProcessNode_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JoinNode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_JoinPreviousProcessNode_m">
+        <PropertyRef Name="JoinNodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MD_JoinPreviousProcessNode_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="ProcessNode" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.JoinPreviousProcessNode" Role="MD_JoinPreviousProcessNode_m" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessNode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_JoinPreviousProcessNode_m">
+        <PropertyRef Name="PreviousProcessNodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TimerNode" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DelayDateTimeExpression" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProcessNode" Relationship="HrgWeb.Business.WorkflowSystem.DataModel.FK_MD_TimerNode_m_MD_ProcessNode_m" FromRole="MD_TimerNode_m" ToRole="ProcessNode" />
+  </EntityType>
+  <Association Name="FK_MD_TimerNode_m_MD_ProcessNode_m">
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.ProcessNode" Role="ProcessNode" Multiplicity="1" />
+    <End Type="HrgWeb.Business.WorkflowSystem.DataModel.TimerNode" Role="MD_TimerNode_m" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessNode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MD_TimerNode_m">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
