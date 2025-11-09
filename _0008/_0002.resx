@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="This Timer Already has been Done" xml:space="preserve">
-    <value>این زمانبندی قبلا انجام شده است</value>
+    <value>This timer has already been completed.</value>
   </data>
   <data name="This Task Already has been Done" xml:space="preserve">
-    <value>این تسک قبلا انجام شده است</value>
+    <value>This task has already been completed.</value>
   </data>
 </root>

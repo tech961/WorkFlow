@@ -12,9 +12,9 @@ namespace SimpleWorkflowEngine.Models
   public enum UserTaskRegistrationType
   {
     None,
-    [Description("توسط سیستم")] BySystem,
-    [Description("توسط سیستم با پیش نمایش")] BySystemWithPreview,
-    [Description("توسط کاربر")] ByUser,
-    [Description("توسط کاربر با مقادیر پیش فرض")] ByUserWithDefaultValues,
+    [Description("By system")] BySystem,
+    [Description("By system with preview")] BySystemWithPreview,
+    [Description("By user")] ByUser,
+    [Description("By user with default values")] ByUserWithDefaultValues,
   }
 }
