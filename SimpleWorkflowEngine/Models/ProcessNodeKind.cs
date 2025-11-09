@@ -12,12 +12,12 @@ namespace SimpleWorkflowEngine.Models
   public enum ProcessNodeKind
   {
     None,
-    [Description("شروع")] StartEventNode,
-    [Description("تسک کاربر")] UserTaskNode,
-    [Description("تسک سیستم")] ServiceTaskNode,
+    [Description("Start")] StartEventNode,
+    [Description("User task")] UserTaskNode,
+    [Description("Service task")] ServiceTaskNode,
     [Description("Fork")] ForkNode,
     [Description("Join")] JoinNode,
-    [Description("پایان")] EndEventNode,
-    [Description("زمانبندی")] Timer,
+    [Description("End")] EndEventNode,
+    [Description("Timer")] Timer,
   }
 }
